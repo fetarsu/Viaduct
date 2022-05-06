@@ -7,19 +7,16 @@ using Xamarin.Forms;
 
 namespace Viaduct.PageModels
 {
-    public class ReportPageModel : FreshBasePageModel
+    public class ReportViewModel : FreshBasePageModel
     {
         private readonly ReportService _reportService = new ReportService();
         private readonly UserService _userService = new UserService();
-        public ReportPageModel()
+        public ReportViewModel()
         {
             StartCommand = new Command(StartMethod);
             AddCommand = new Command(AddMethod);  
             CloseCommand = new Command(CloseMethod);  
             ReopenCommand = new Command(ReopenMethod);
-
-            //var report = _reportService.GetReport(DateTime.Now);
-            //var x = report.Result;
         }
         
         public ICommand StartCommand { get; }
@@ -32,21 +29,7 @@ namespace Viaduct.PageModels
         
         private async void StartMethod()
         {
-            //Report report2 = new Report()
-            //{
-            //    State = 0,
-            //    CardIncome = 0,
-            //    Date = DateTime.Now,
-            //    Revenue = 0
-            //};
-            //_reportService.AddReport(report2);
-
-            //Report report2 = new Report()
-            //{
-            //    //Name = "aaxx"
-            //};
-            //await _reportService.AddReport(report2);
-            await CoreMethods.PushPageModel<LoginPageModel>(null, true);
+            await CoreMethods.PushPageModel<ChooseUserViewModel>(null, true);
         }
         private void AddMethod()
         {

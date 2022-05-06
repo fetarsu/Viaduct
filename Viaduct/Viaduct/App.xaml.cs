@@ -20,7 +20,7 @@ namespace Viaduct
 
         public void SetUpNavigation()
         {
-            var page = FreshPageModelResolver.ResolvePageModel<LoginPageModel>();
+            var page = FreshPageModelResolver.ResolvePageModel<ChooseUserViewModel>();
             var basicNavContainer = new FreshNavigationContainer(page);
             MainPage = basicNavContainer;
         }

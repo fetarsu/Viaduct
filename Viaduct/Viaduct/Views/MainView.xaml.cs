@@ -10,9 +10,9 @@ using Xamarin.Forms.Xaml;
 namespace Viaduct.Pages
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class LoginPage : ContentPage
+    public partial class MainPage : TabbedPage
     {
-        public LoginPage()
+        public MainPage()
         {
             InitializeComponent();
         }

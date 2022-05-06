@@ -4,46 +4,6 @@
              xmlns:magicGradients="clr-namespace:MagicGradients;assembly=MagicGradients"
              x:Class="Viaduct.App">
     <Application.Resources>
-        <Style>
-            
-        </Style>
-        <ControlTemplate x:Key="PageWithGradient">
-            <Grid>
-                <magicGradients:GradientView VerticalOptions="FillAndExpand" >
-                    <magicGradients:GradientView.GradientSource>
-                        <magicGradients:CssGradientSource>
-                            <x:String>
-                                <![CDATA[
-                                    linear-gradient(0deg, rgb(38,37,37),rgb(28,6,6))
-                                ]]>
-                            </x:String>
-                        </magicGradients:CssGradientSource>
-                    </magicGradients:GradientView.GradientSource>
-                </magicGradients:GradientView>
-                <ContentPresenter />
-            </Grid>
-        </ControlTemplate>
-        <Style TargetType="ContentPage" ApplyToDerivedTypes="True">
-            <Setter Property="ControlTemplate">
-                <Setter.Value>
-                    <ControlTemplate>
-                        <Grid>
-                            <magicGradients:GradientView VerticalOptions="FillAndExpand" >
-                                <magicGradients:GradientView.GradientSource>
-                                    <magicGradients:CssGradientSource>
-                                        <x:String>
-                                            <![CDATA[
-                                    linear-gradient(45deg, rgb(133, 28, 39) 0%, rgb(133, 28, 39) 1%,rgb(191, 40, 36) 1%, rgb(191, 40, 36) 15%,rgb(76, 15, 42) 15%, rgb(76, 15, 42) 38%,rgb(162, 34, 38) 38%, rgb(162, 34, 38) 55%,rgb(220, 46, 35) 55%, rgb(220, 46, 35) 62%,rgb(105, 21, 41) 62%, rgb(105, 21, 41) 63%,rgb(47, 9, 44) 63%, rgb(47, 9, 44) 69%,rgb(18, 3, 45) 69%, rgb(18, 3, 45) 100%)
-                                ]]>
-                                        </x:String>
-                                    </magicGradients:CssGradientSource>
-                                </magicGradients:GradientView.GradientSource>
-                            </magicGradients:GradientView>
-                            <ContentPresenter />
-                        </Grid>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
+        
     </Application.Resources>
 </Application>

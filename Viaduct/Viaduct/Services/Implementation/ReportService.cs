@@ -8,14 +8,13 @@ namespace Viaduct.Services.Implementation
 {
     public class ReportService : IReportService
     {
-        private static readonly MobileServiceClient azureService = new MobileServiceClient("https://viaductmobile.azurewebsites.net/");
+        private static readonly MobileServiceClient azureService = new MobileServiceClient("https://viaductdev.azurewebsites.net");
         
         public async Task<IEnumerable<Report>> GetAllReports()
         {
-            var table = azureService.GetTable<Report>();
-            return await table.ReadAsync();
+            return await azureService.GetTable<Report>().ToListAsync();
         }
-        
+
         public async Task<IEnumerable<Report>> GetReport(DateTime date)
         {
             var table = azureService.GetTable<Report>();
