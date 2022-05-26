@@ -3,14 +3,18 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows.Input;
+using Viaduct.Models;
+using Viaduct.Services.Data;
 using Xamarin.Forms;
 
 namespace Viaduct.PageModels
 {
     public class ChooseUserViewModel : FreshBasePageModel
     {
-        public ChooseUserViewModel()
+        IUserService _userService;
+        public ChooseUserViewModel(IUserService userService)
         {
+            _userService = userService;
             AdminCommand = new Command(StartAsAdmin);
             ManagerCommand = new Command(StartAsManager);
             DelivererCommand = new Command(StartAsDelivere);
@@ -24,7 +28,15 @@ namespace Viaduct.PageModels
 
         private void StartAsAdmin()
         {
-            GoToMainPage();
+            var user = new User()
+            {
+                Name = "aa12",
+                Password = "ssss",
+                Permission = 1
+            };
+
+            var x = _userService.SaveUserAsync(user, true);
+ //           GoToMainPage();
         }
         private void StartAsManager()
         {

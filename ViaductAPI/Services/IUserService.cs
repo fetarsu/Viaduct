@@ -1,8 +1,6 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
-using Viaduct.Models;
+﻿using ViaductAPI.Models;
 
-namespace Viaduct.Services
+namespace ViaductAPI.Services
 {
     public interface IUserService
     {
@@ -10,5 +8,6 @@ namespace Viaduct.Services
         Task<IEnumerable<User>> GetUser(string userId);
         Task<User> UpdateUser(User user);
         Task<User> AddUser(User user);
+        Task<User> DeleteUser(User user);
     }
 }

@@ -10,7 +10,6 @@ namespace Viaduct.PageModels
     public class ReportViewModel : FreshBasePageModel
     {
         private readonly ReportService _reportService = new ReportService();
-        private readonly UserService _userService = new UserService();
         public ReportViewModel()
         {
             StartCommand = new Command(StartMethod);
