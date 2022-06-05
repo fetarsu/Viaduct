@@ -1,8 +1,10 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using ViaductAPI.Models;
-using ViaductAPI.Services;
+﻿using Microsoft.AspNetCore.Datasync;
+using Microsoft.AspNetCore.Datasync.EFCore;
+using Microsoft.AspNetCore.Mvc;
+using ViaductBackend.Models;
+using ViaductBackend.Services;
 
-namespace ViaductAPI.Controllers
+namespace ViaductBackend.Controllers
 {
     #region snippetErrorCode
     public enum ErrorCode
@@ -18,13 +20,14 @@ namespace ViaductAPI.Controllers
 
     #region snippetDI
     [ApiController]
-    [Route("[controller]")]
-    public class UsersController : ControllerBase
+    [Route("tables/[controller]")]
+    public class UsersController : TableController<User>
     {
         private readonly IUserService _userService;
 
-        public UsersController(IUserService userService)
+        public UsersController(ViaductDbContext context, IUserService userService) : base()
         {
+            Repository = new EntityTableRepository<User>(context);
             _userService = userService;
         }
         #endregion
