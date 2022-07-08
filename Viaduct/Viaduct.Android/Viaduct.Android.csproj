@@ -87,13 +87,16 @@
     <AndroidResource Include="Resources\mipmap-xxxhdpi\launcher_foreground.png" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Resources\drawable\" />
+    <AndroidResource Include="Resources\drawable\report.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Viaduct\Viaduct.csproj">
       <Project>{7666D5A9-ACD8-4F50-AD30-8A293FA2C861}</Project>
       <Name>Viaduct</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\user.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

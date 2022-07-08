@@ -2,45 +2,44 @@
 using System.Windows.Input;
 using FreshMvvm;
 using Viaduct.Models;
+using Viaduct.Services;
 using Viaduct.Services.Implementation;
 using Xamarin.Forms;
 
 namespace Viaduct.PageModels
 {
-    public class ReportViewModel : FreshBasePageModel
+    internal class ReportViewModel : FreshBasePageModel
     {
-        private readonly ReportService _reportService = new ReportService();
-        public ReportViewModel()
-        {
-            StartCommand = new Command(StartMethod);
-            AddCommand = new Command(AddMethod);  
-            CloseCommand = new Command(CloseMethod);  
-            ReopenCommand = new Command(ReopenMethod);
-        }
-        
-        public ICommand StartCommand { get; }
-        public ICommand AddCommand { get; }
-        public ICommand CloseCommand { get; }
-        public ICommand ReopenCommand { get; }
+        public bool _isVisibleAddReportButton;
+        private readonly IUserService _userService;
 
+        public ReportViewModel(IUserService userService)
+        {
+            _userService = userService;
+            IsVisibleAddReportButton = ShowAddReportIfUserLogged();
+        }
 
-        public string ReportState { get; set; }
-        
-        private async void StartMethod()
+        public bool IsVisibleAddReportButton
         {
-            await CoreMethods.PushPageModel<ChooseUserViewModel>(null, true);
+            get => _isVisibleAddReportButton;
+            set => _isVisibleAddReportButton = value;
         }
-        private void AddMethod()
+
+        public bool ShowAddReportIfUserLogged()
         {
-            throw new NotImplementedException();
+            if(_userService.loggedUser != null)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
-        private void CloseMethod()
-        {
-            throw new NotImplementedException();
-        }
-        private void ReopenMethod()
-        {
-            throw new NotImplementedException();
-        }
+
+        //private async void StartMethod()
+        //{
+        //    await CoreMethods.PushPageModel<ChooseUserViewModel>(null, true);
+        //}
     }
 }

@@ -11,8 +11,8 @@ namespace Viaduct.PageModels
 {
     public class ChooseUserViewModel : FreshBasePageModel
     {
-        IUserService _userService;
-        public ChooseUserViewModel(IUserService userService)
+        IUserDataService _userService;
+        public ChooseUserViewModel(IUserDataService userService)
         {
             _userService = userService;
             AdminCommand = new Command(StartAsAdmin);
@@ -35,8 +35,9 @@ namespace Viaduct.PageModels
                 Permission = 1
             };
 
-            var x = _userService.SaveUserAsync(user, true);
- //           GoToMainPage();
+
+            var y = _userService.ReadUserAsync("1");
+            GoToMainPage();
         }
         private void StartAsManager()
         {

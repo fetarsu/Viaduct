@@ -9,14 +9,7 @@
              >
     <ContentPage.Content>
         <StackLayout>
-            <Label x:Name="stateLabel" Text="{Binding ReportState}"
-                   VerticalOptions="CenterAndExpand"
-                   HorizontalOptions="CenterAndExpand"/>
-            
-            <Button Text="{x:Static resources:Strings.DayStart}" Command="{Binding StartCommand}"></Button>
-            <Button Text="Dodanie operacji" Command="{Binding AddCommand}"></Button>
-            <Button Text="Zamkniecie dnia" Command="{Binding CloseCommand}"></Button>
-            <Button Text="Ponowne otworzenie dnia" Command="{Binding ReopenCommand}"></Button>
+            <Button x:Name="addReportButton" Text="{x:Static resources:Strings.ReportPage_AddReportButton}" Command="{Binding AddReportCommand}" IsVisible="{Binding IsVisibleAddReportButton}"></Button>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

@@ -68,5 +68,41 @@ namespace Viaduct.Resources {
                 return ResourceManager.GetString("DayStart", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Login.
+        /// </summary>
+        internal static string LoginPage_Login {
+            get {
+                return ResourceManager.GetString("LoginPage_Login", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zaloguj się.
+        /// </summary>
+        internal static string LoginPage_LoginButton {
+            get {
+                return ResourceManager.GetString("LoginPage_LoginButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hasło.
+        /// </summary>
+        internal static string LoginPage_Password {
+            get {
+                return ResourceManager.GetString("LoginPage_Password", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dodaj raport.
+        /// </summary>
+        internal static string ReportPage_AddReportButton {
+            get {
+                return ResourceManager.GetString("ReportPage_AddReportButton", resourceCulture);
+            }
+        }
     }
 }

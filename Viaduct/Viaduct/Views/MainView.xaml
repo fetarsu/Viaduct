@@ -1,12 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Viaduct.Pages.MainPage">
-    <ContentPage>
-        <ContentPage.Content>
-            <StackLayout>
-                <Button x:Name="ReportButton" Text="Raport" Command="{Binding GoToReportCommand}"/>
-            </StackLayout>
-        </ContentPage.Content>
-    </ContentPage>
-</TabbedPage>
+             xmlns:resources="clr-namespace:Viaduct.Resources"
+             xmlns:local="clr-namespace:Viaduct.Models.Parameters"
+             x:Class="Viaduct.Pages.MainPage"
+             Title="Logowanie"
+             IconImageSource="user.png">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="{x:Static resources:Strings.LoginPage_Login}"></Label>
+            <Entry x:Name="loginEntry" Text="{Binding Login}"></Entry>
+            <Label Text="{x:Static resources:Strings.LoginPage_Password}"></Label>
+            <Entry x:Name="passwordEntry" IsPassword="True"></Entry>
+            <Button Text="{x:Static resources:Strings.LoginPage_LoginButton}" Command="{Binding LoginCommand}" CommandParameter="{x:Reference passwordEntry}"></Button>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
