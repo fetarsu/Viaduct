@@ -22,15 +22,20 @@ namespace Viaduct
 
         public void SetUpNavigation()
         {
-            var page = FreshPageModelResolver.ResolvePageModel<ChooseUserViewModel>();
-            var basicNavContainer = new FreshNavigationContainer(page);
-            MainPage = basicNavContainer;
+            //var page = FreshPageModelResolver.ResolvePageModel<MainViewModel>();
+            //var basicNavContainer = new FreshNavigationContainer(page);
+            //MainPage = basicNavContainer;
+            var tabbedNavigation = new FreshTabbedNavigationContainer();
+            tabbedNavigation.AddTab<MainViewModel>("Logowanie", "user.png", null);
+            tabbedNavigation.AddTab<ReportMenuPageModel>("Raport", "report.png", null);
+            MainPage = tabbedNavigation;
         }
 
         public void SetupIOC()
         {
             FreshIOC.Container.Register<ICashMachine, CashMachine>();
             FreshIOC.Container.Register<IReportService, ReportService>();
+            FreshIOC.Container.Register<IUserDataService, UserDataService>();
             FreshIOC.Container.Register<IUserService, UserService>();
         }
 
