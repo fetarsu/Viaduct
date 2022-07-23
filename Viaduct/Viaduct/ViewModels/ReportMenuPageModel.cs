@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows.Input;
+using Viaduct.Resources.Controls;
 using Viaduct.Services;
 using Xamarin.Forms;
 
@@ -11,13 +12,12 @@ namespace Viaduct.PageModels
     internal class ReportMenuPageModel : FreshBasePageModel
     {
         public bool _isVisibleAddReportButton;
-        private readonly IUserService _userService;
+        private readonly ILoggedUserService _userService;
 
-        public ReportMenuPageModel(IUserService userService)
+        public ReportMenuPageModel(ILoggedUserService userService)
         {
             _userService = userService;
             IsVisibleAddReportButton = ShowAddReportIfUserLogged();
-            GoToReportCommand = new Command(GoToReport);
             GoToReportCommand = new Command(GoToReport);
         }
 
@@ -43,7 +43,7 @@ namespace Viaduct.PageModels
 
         public void GoToReport(object sender)
         {
-            var pickerDate = sender as Xamarin.Forms.DatePicker;
+            var pickerDate = sender as OKCancelDatePicker;
             pickerDate.IsVisible = true;
             pickerDate.Focus();
         }

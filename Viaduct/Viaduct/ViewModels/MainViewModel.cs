@@ -19,10 +19,10 @@ namespace Viaduct.PageModels
         TabbedPage _tabbedPage;
         private string _login;
         private IUserDataService _userDataService;
-        private IUserService _userService;
+        private ILoggedUserService _userService;
 
         [Obsolete]
-        public MainViewModel(IUserDataService userDataService, IUserService userService)
+        public MainViewModel(IUserDataService userDataService, ILoggedUserService userService)
         {
             _tabbedPage = App.Current.MainPage as TabbedPage;
             _userDataService = userDataService;

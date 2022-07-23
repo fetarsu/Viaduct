@@ -7,9 +7,6 @@ namespace Viaduct.Services
 {
     public interface IReportService
     {
-        Task<IEnumerable<Report>> GetAllReports();
-        Task<IEnumerable<Report>> GetReport(DateTime date);
-        Task<Report> UpdateReport(Report report);
-        Task<Report> AddReport(Report report);
+        DateTime ReportDate { get; set; }
     }
 }

@@ -39,8 +39,7 @@ namespace ViaductBackendAPI.Controllers
         [HttpPost]
         public IActionResult PostUser([FromBody] User item)
         {
-
-            _dbContext.Add(item);
+            _dbContext.User.Add(item);
             _dbContext.SaveChanges();
             return Ok(item);
         }

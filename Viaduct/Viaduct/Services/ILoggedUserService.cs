@@ -5,7 +5,7 @@ using Viaduct.Models;
 
 namespace Viaduct.Services
 {
-    interface IUserService
+    interface ILoggedUserService
     {
         User loggedUser { get; set; }
     }

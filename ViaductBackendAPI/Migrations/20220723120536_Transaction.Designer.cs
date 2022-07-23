@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ViaductBackendAPI.Models;
 
@@ -11,9 +12,10 @@ using ViaductBackendAPI.Models;
 namespace ViaductBackendAPI.Migrations
 {
     [DbContext(typeof(ViaductDbContext))]
-    partial class ViaductDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220723120536_Transaction")]
+    partial class Transaction
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             xmlns:resources="clr-namespace:Viaduct.Resources"
+             x:Class="Viaduct.Pages.ReportPage"
+             Title="Report"
+             NavigationPage.HasNavigationBar="False"
+             >
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout>
+                <Label Text="{Binding ReportTitle}"></Label>
+            </StackLayout>
+            <StackLayout>
+                <xct:Expander>
+                    <xct:Expander.Header>
+                        <Label Text="Baboon"
+                   FontAttributes="Bold"
+                   FontSize="Medium" />
+                    </xct:Expander.Header>
+                    <Grid Padding="10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <Image Source="http://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Papio_anubis_%28Serengeti%2C_2009%29.jpg/200px-Papio_anubis_%28Serengeti%2C_2009%29.jpg"
+                   Aspect="AspectFill"
+                   HeightRequest="120"
+                   WidthRequest="120" />
+                        <Label Grid.Column="1"
+                   Text="Baboons are African and Arabian Old World monkeys belonging to the genus Papio, part of the subfamily Cercopithecinae."
+                   FontAttributes="Italic" />
+                    </Grid>
+                </xct:Expander>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

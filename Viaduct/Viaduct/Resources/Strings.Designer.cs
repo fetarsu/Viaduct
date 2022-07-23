@@ -104,5 +104,14 @@ namespace Viaduct.Resources {
                 return ResourceManager.GetString("ReportPage_AddReportButton", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Raport z dnia.
+        /// </summary>
+        internal static string ReportPage_ReportFromDay {
+            get {
+                return ResourceManager.GetString("ReportPage_ReportFromDay", resourceCulture);
+            }
+        }
     }
 }

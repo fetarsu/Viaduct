@@ -132,4 +132,7 @@
   <data name="ReportPage_AddReportButton" xml:space="preserve">
     <value>Dodaj raport</value>
   </data>
+  <data name="ReportPage_ReportFromDay" xml:space="preserve">
+    <value>Raport z dnia</value>
+  </data>
 </root>

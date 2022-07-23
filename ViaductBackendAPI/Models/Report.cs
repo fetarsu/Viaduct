@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Viaduct.Models
+﻿namespace ViaductBackendAPI.Models
 {
     public class Report
     {
