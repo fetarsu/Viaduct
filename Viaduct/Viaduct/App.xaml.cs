@@ -17,7 +17,7 @@ namespace Viaduct
             InitializeComponent();
             SetupIOC();
             SetUpNavigation();
-
+            Xamarin.Forms.DataGrid.DataGridComponent.Init();
         }
 
         public void SetUpNavigation()
@@ -36,6 +36,7 @@ namespace Viaduct
             FreshIOC.Container.Register<ICashMachine, CashMachine>();
             FreshIOC.Container.Register<IReportService, ReportService>();
             FreshIOC.Container.Register<IUserDataService, UserDataService>();
+            FreshIOC.Container.Register<ITransactionDataService, TransactionDataService>();
             FreshIOC.Container.Register<IUserService, UserService>();
         }
 

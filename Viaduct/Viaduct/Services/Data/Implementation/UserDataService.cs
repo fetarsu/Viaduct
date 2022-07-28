@@ -15,7 +15,7 @@ namespace Viaduct.Services.Data.Implementation
         HttpClient client;
         JsonSerializerOptions serializerOptions;
         //private readonly string CreatedRestUrl = string.Concat(Constants.Settigns.RestUrl, "/user/{0}");
-        private readonly string RestUrl = string.Concat(Constants.Settigns.apiUrl, "User/");
+        private readonly string RestUrl = string.Concat(Constants.Settings.apiUrl, "User/");
 
         public List<User> Items { get; private set; }
 

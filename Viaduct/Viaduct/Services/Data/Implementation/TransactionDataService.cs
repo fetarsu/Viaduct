@@ -11,13 +11,15 @@ using Constants = Viaduct.Resources.Constants;
 
 namespace Viaduct.Services.Data.Implementation
 {
-    public class TransactionService
+    public class TransactionDataService : ITransactionDataService
     {
         HttpClient client;
         JsonSerializerOptions serializerOptions;
         private readonly string RestUrl = string.Concat(Constants.Settings.apiUrl, "Transaction/");
 
-        public List<Transaction> Items { get; private set; }
+        List<Transaction> transactions = new List<Transaction>();
+        Transaction transaction = new Transaction();
+
 
         public TransactionDataService()
         {
@@ -29,10 +31,8 @@ namespace Viaduct.Services.Data.Implementation
             };
         }
 
-        public async Task<List<User>> ReadAllUsersAsync()
+        public async Task<List<Transaction>> ReadAllTransactionsAsync()
         {
-            var Users = new List<User>();
-
             Uri uri = new Uri(string.Format(RestUrl, string.Empty));
 
             try
@@ -41,7 +41,7 @@ namespace Viaduct.Services.Data.Implementation
                 if (response.IsSuccessStatusCode)
                 {
                     string content = await response.Content.ReadAsStringAsync();
-                    Users = JsonSerializer.Deserialize<List<User>>(content, serializerOptions);
+                    transactions = JsonSerializer.Deserialize<List<Transaction>>(content, serializerOptions);
                 }
 
             }
@@ -50,13 +50,12 @@ namespace Viaduct.Services.Data.Implementation
                 Debug.WriteLine(@"\tERROR {0}", ex.Message);
             }
 
-            return Users;
+            return transactions;
         }
 
-        public async Task<User> ReadUserAsync(string id)
+        public async Task<Transaction> ReadTransactionAsync(int id)
         {
             Uri uri = new Uri(string.Format($"{RestUrl}id/", id));
-            var User = new User();
 
             try
             {
@@ -64,7 +63,7 @@ namespace Viaduct.Services.Data.Implementation
                 if (response.IsSuccessStatusCode)
                 {
                     string content = await response.Content.ReadAsStringAsync();
-                    User = JsonSerializer.Deserialize<User>(content, serializerOptions);
+                    transaction = JsonSerializer.Deserialize<Transaction>(content, serializerOptions);
                 }
 
             }
@@ -72,13 +71,12 @@ namespace Viaduct.Services.Data.Implementation
             {
                 Debug.WriteLine(@"\tERROR {0}", ex.Message);
             }
-            return User;
+            return transaction;
         }
 
-        public async Task<User> GetUserByLogin(string login)
+        public async Task<List<Transaction>> ReadTransactionsFromOneDay(string date)
         {
-            Uri uri = new Uri($"{RestUrl}login/{login}");
-            var User = new User();
+            Uri uri = new Uri($"{RestUrl}date/{date}");
 
             try
             {
@@ -86,7 +84,7 @@ namespace Viaduct.Services.Data.Implementation
                 if (response.IsSuccessStatusCode)
                 {
                     string content = await response.Content.ReadAsStringAsync();
-                    User = JsonSerializer.Deserialize<User>(content, serializerOptions);
+                    transactions = JsonSerializer.Deserialize<List<Transaction>>(content, serializerOptions);
                 }
 
             }
@@ -94,16 +92,16 @@ namespace Viaduct.Services.Data.Implementation
             {
                 Debug.WriteLine(@"\tERROR {0}", ex.Message);
             }
-            return User;
+            return transactions;
         }
 
-        public async Task SaveUserAsync(User item, bool isNewItem = false)
+        public async Task SaveTransactionAsync(Transaction item, bool isNewItem = false)
         {
             Uri uri = new Uri(string.Format(RestUrl, string.Empty));
 
             try
             {
-                string json = JsonSerializer.Serialize<User>(item, serializerOptions);
+                string json = JsonSerializer.Serialize<Transaction>(item, serializerOptions);
                 StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
 
                 HttpResponseMessage response = null;
@@ -118,27 +116,7 @@ namespace Viaduct.Services.Data.Implementation
 
                 if (response.IsSuccessStatusCode)
                 {
-                    Debug.WriteLine(@"\User successfully saved.");
-                }
-
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine(@"\tERROR {0}", ex.Message);
-            }
-        }
-
-        public async Task DeleteUserAsync(string id)
-        {
-            Uri uri = new Uri(string.Format(RestUrl, id));
-
-            try
-            {
-                HttpResponseMessage response = await client.DeleteAsync(uri);
-
-                if (response.IsSuccessStatusCode)
-                {
-                    Debug.WriteLine(@"\User successfully deleted.");
+                    Debug.WriteLine(@"\Transaction successfully saved.");
                 }
 
             }

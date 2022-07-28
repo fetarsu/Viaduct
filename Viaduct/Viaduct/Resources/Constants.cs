@@ -7,7 +7,7 @@ namespace Viaduct.Resources
 {
     internal static class Constants
     {
-        internal static class Settigns
+        internal static class Settings
         {
 
             //public class UrlFacotry

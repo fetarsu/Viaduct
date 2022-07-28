@@ -3,6 +3,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             xmlns:dg="clr-namespace:Xamarin.Forms.DataGrid;assembly=Xamarin.Forms.DataGrid"
              x:Class="Viaduct.Pages.ReportPage">
     <ContentPage.Content>
         <StackLayout>
@@ -12,23 +13,23 @@
             <StackLayout>
                 <xct:Expander>
                     <xct:Expander.Header>
-                        <Label Text="Baboon"
-                               FontAttributes="Bold"
-                               FontSize="Medium" />
+                        <Label Text="Transakcje" />
                     </xct:Expander.Header>
-                    <Grid Padding="10">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto" />
-                            <ColumnDefinition Width="Auto" />
-                        </Grid.ColumnDefinitions>
-                        <Image Source="http://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Papio_anubis_%28Serengeti%2C_2009%29.jpg/200px-Papio_anubis_%28Serengeti%2C_2009%29.jpg"
-                               Aspect="AspectFill"
-                               HeightRequest="120"
-                               WidthRequest="120" />
-                        <Label Grid.Column="1"
-                               Text="Baboons are African and Arabian Old World monkeys belonging to the genus Papio, part of the subfamily Cercopithecinae."
-                               FontAttributes="Italic" />
-                    </Grid>
+                    <dg:DataGrid HeaderBackground="White" x:Name="transactionsDataGrid" ItemsSource="{Binding Transactions}" SelectedItem="{Binding SelectedTransaction}" PullToRefreshCommand="{Binding RefreshCommand}" IsRefreshing="{Binding IsRefreshing}" RowHeight="70" HeaderHeight="50" SelectionEnabled="True">
+                        <x:Arguments>
+                            <ListViewCachingStrategy>RetainElement</ListViewCachingStrategy>
+                        </x:Arguments>
+                        <dg:DataGrid.Columns>
+                            <dg:DataGridColumn Title="Nazwa" PropertyName="Name" Width="2*"/>
+                            <dg:DataGridColumn Title="Data" PropertyName="Value" Width="2*"/>
+                        </dg:DataGrid.Columns>
+                        <dg:DataGrid.RowsBackgroundColorPalette>
+                            <dg:PaletteCollection>
+                                <Color>#F2F2F2</Color>
+                                <Color>#FFFFFF</Color>
+                            </dg:PaletteCollection>
+                        </dg:DataGrid.RowsBackgroundColorPalette>
+                    </dg:DataGrid>
                 </xct:Expander>
             </StackLayout>
             </StackLayout>

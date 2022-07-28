@@ -1,19 +1,18 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Viaduct.Models;
 
 namespace Viaduct.Services.Data
 {
-    public interface ITransactionService
+    public interface ITransactionDataService
     {
         Task<List<Transaction>> ReadAllTransactionsAsync();
 
-        Task<List<User>> ReadAllUsersAsync();
+        Task<Transaction> ReadTransactionAsync(int id);
 
-        Task<User> ReadUserAsync(string id);
+        Task<List<Transaction>> ReadTransactionsFromOneDay(string date);
 
-        Task<User> GetUserByLogin(string login);
-
-        Task DeleteUserAsync(string id);
+        Task SaveTransactionAsync(Transaction item, bool isNewItem);
     }
 }
