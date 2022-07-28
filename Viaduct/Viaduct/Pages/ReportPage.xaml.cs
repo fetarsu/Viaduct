@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace Viaduct.Pages
+namespace Viaduct.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ReportPage : ContentPage

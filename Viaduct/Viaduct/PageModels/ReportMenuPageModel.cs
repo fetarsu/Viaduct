@@ -1,23 +1,27 @@
-﻿using System;
+﻿using FreshMvvm;
+using System;
+using System.Collections.Generic;
+using System.Text;
 using System.Windows.Input;
-using FreshMvvm;
-using Viaduct.Models;
 using Viaduct.Services;
-using Viaduct.Services.Implementation;
 using Xamarin.Forms;
 
 namespace Viaduct.PageModels
 {
-    internal class ReportViewModel : FreshBasePageModel
+    internal class ReportMenuPageModel : FreshBasePageModel
     {
         public bool _isVisibleAddReportButton;
         private readonly IUserService _userService;
 
-        public ReportViewModel(IUserService userService)
+        public ReportMenuPageModel(IUserService userService)
         {
             _userService = userService;
             IsVisibleAddReportButton = ShowAddReportIfUserLogged();
+            GoToReportCommand = new Command(GoToReport);
+            GoToReportCommand = new Command(GoToReport);
         }
+
+        public ICommand GoToReportCommand { get; }
 
         public bool IsVisibleAddReportButton
         {
@@ -27,14 +31,20 @@ namespace Viaduct.PageModels
 
         public bool ShowAddReportIfUserLogged()
         {
-            if(_userService.loggedUser != null)
-            {
+            //if (_userService.loggedUser != null)
+            //{
                 return true;
-            }
-            else
-            {
-                return false;
-            }
+            //}
+            //else
+            //{
+            //    return false;
+            //}
+        }
+
+        public void GoToReport(object sender)
+        {
+            var pickerDate = sender as Xamarin.Forms.DatePicker;
+            pickerDate.Focus();
         }
 
         //private async void StartMethod()
